@@ -23,11 +23,24 @@ def run_tests():
         (45, 1.7, 15.57, "Underweight"),    # Underweight
         (100, 1.8, 30.86, "Obese")          # Obese
     ]
+    # Kushagra's Test Cases
+    kushagra_tests = [
+        (70, 1.75, 22.86, "Normal weight"), # Normal weight
+        (85, 1.7, 29.41, "Overweight")      # Overweight
+    ]
 
     
-  # Running Pranav's test cases
+    # Running Pranav's test cases
     print("\nRunning Pranav's test cases:")
     for weight, height, expected_bmi, expected_category in pranav_tests:
+        bmi = round(calculate_bmi(weight, height), 2)
+        category = get_bmi_category(bmi)
+        assert bmi == expected_bmi, f"Failed: Expected BMI {expected_bmi}, got {bmi}"
+        assert category == expected_category, f"Failed: Expected category {expected_category}, got {category}"
+        print(f"✅ Passed for weight={weight}, height={height}")
+    # Running Kushagra's test cases
+    print("\nRunning Kushagra's test cases:")
+    for weight, height, expected_bmi, expected_category in kushagra_tests:
         bmi = round(calculate_bmi(weight, height), 2)
         category = get_bmi_category(bmi)
         assert bmi == expected_bmi, f"Failed: Expected BMI {expected_bmi}, got {bmi}"
